@@ -35,4 +35,4 @@ You can use this library function `inline-docs` in packages like [eldoc-overlay-
 
 # related modes
 
-- [eldoc-overlay-mode](https://github.com/stardiviner/eldoc-overlay-mode)
+- [eldoc-overlay](https://repo.or.cz/eldoc-overlay.git)
