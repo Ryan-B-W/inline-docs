@@ -87,9 +87,11 @@ Set `inline-docs-position' to `up' to fix issue that `inline-docs' does not show
 
 (defun inline-docs--string-display (string apply-face)
   "Show STRING contents below point line until next command with APPLY-FACE."
-  ;; note that `display-line-numbers-mode' takes 2 + `line-number-display-width' columns
+  ;; note that `display-line-numbers-mode' takes 2 + `line-number-display-width' columns.
+  ;; In addition, truncate-lines being nil uses up an additional column.
   (let* ((total-column-number (if display-line-numbers-mode
-                                  (- (window-body-width) (+ 2 (line-number-display-width)))
+                                  (- (window-body-width) (+ (if truncate-lines 2 3)
+                                                            (line-number-display-width)))
                                 (window-body-width)))
          (border-line (make-string total-column-number inline-docs-border-symbol))
          (offset (make-string
